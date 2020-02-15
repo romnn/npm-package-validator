@@ -92,7 +92,7 @@ setup(
     name="npm_package_validator",
     packages=find_packages(include=["npm_package_validator"]),
     test_suite="tests",
-    url="https://github.com/romnnn/npm_package_validator",
+    url="https://github.com/romnnn/npm-package-validator",
     version=version,
     zip_safe=False,
 )
