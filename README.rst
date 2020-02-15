@@ -20,19 +20,41 @@ npm-package-validator
 
 """"""""
 
-Your short description here. `romnnn.github.io/npm_package_validator <https://romnnn.github.io/npm_package_validator>`_
+This python package allows you to validate nom package names.
+It is a python implementation of the original `npm/validate-npm-package-name <https://github.com/npm/validate-npm-package-name>`_ written in javascript.
 
 .. code-block:: console
 
     $ pip install npm_package_validator
 
-See the `official documentation`_ for more information.
+Usage
+-----
 
-.. _official documentation: https://npm-package-validator.readthedocs.io
+Validate an npm package name like this:
 
 .. code-block:: python
 
     import npm_package_validator
+    assert npm_package_validator.valid_old_package('MY-package')  # SUCCEEDS!
+    assert npm_package_validator.valid_new_package('MY-package')  # FAILS! 
+
+If you want to know whats wrong with a name, use:
+
+.. code-block:: python
+
+    from npm_package_validator.validate import validate_package
+    errors, warnings = validate_package('MY-package')
+    print("Errors: %s" % ", ".join(errors))
+    print("Warnings: %s" % ", ".join(warnings))
+
+A valid new package name must have neither ``errors`` nor ``warnings``.
+Existing packages can have ``warnings``, 
+as the npm validation rules have become stricter over time.
+
+Credits
+--------
+
+This package is a port from `npm/validate-npm-package-name <https://github.com/npm/validate-npm-package-name>`_
 
 Development
 -----------
