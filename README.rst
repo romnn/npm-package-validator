@@ -14,10 +14,6 @@ npm-package-validator
         :target: https://github.com/romnnn/npm_package_validator
         :alt: License
 
-.. image:: https://readthedocs.org/projects/npm-package-validator/badge/?version=latest
-        :target: https://npm-package-validator.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
 .. image:: https://codecov.io/gh/romnnn/npm_package_validator/branch/master/graph/badge.svg
         :target: https://codecov.io/gh/romnnn/npm_package_validator
         :alt: Test Coverage
