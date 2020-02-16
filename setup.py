@@ -3,25 +3,17 @@
 
 """The setup script."""
 
+import os
 from setuptools import find_packages, setup
-from pathlib import Path
+
+current = os.path.dirname(os.path.realpath(__file__))
 
 short_description = "No description has been added so far."
 
 version = "1.0.0"
 
-try:
-    if (Path().parent / "README.rst").is_file():
-        with open(str(Path().parent / "README.rst")) as readme_file:
-            long_description = readme_file.read()
-    elif (Path().parent / "README.md").is_file():
-        import m2r
-
-        long_description = m2r.parse_from_file(Path().parent / "README.md")
-    else:
-        raise AssertionError("No readme file")
-except (ImportError, AssertionError):
-    long_description = short_description
+with open(os.path.join(current, "README.rst")) as readme_file:
+    long_description = readme_file.read()
 
 requirements = ["Click>=6.0"]
 test_requirements = [
@@ -76,7 +68,7 @@ setup(
             "npm_package_validator=npm_package_validator.cli:main"
         ]
     },
-    python_requires=">=3.6",
+    python_requires=">=3.5",
     install_requires=requirements,
     setup_requires=tool_requirements,
     tests_require=test_requirements,
