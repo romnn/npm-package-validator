@@ -136,7 +136,6 @@ def test_command_line_interface() -> None:
 
     # Invoking with a bad package name fails
     result = runner.invoke(cli.main, args=["my@package"])
-    print(result.output)
     assert result.exit_code != 0
     assert "Invalid" in result.output
 
