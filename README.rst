@@ -2,20 +2,20 @@
 npm-package-validator
 ===============================
 
-.. image:: https://travis-ci.com/romnnn/npm-package-validator.svg?branch=master
-        :target: https://travis-ci.com/romnnn/npm-package-validator
+.. image:: https://travis-ci.com/romnn/npm-package-validator.svg?branch=master
+        :target: https://travis-ci.com/romnn/npm-package-validator
         :alt: Build Status
 
 .. image:: https://img.shields.io/pypi/v/npm_package_validator.svg
         :target: https://pypi.python.org/pypi/npm_package_validator
         :alt: PyPI version
 
-.. image:: https://img.shields.io/github/license/romnnn/npm-package-validator
-        :target: https://github.com/romnnn/npm-package-validator
+.. image:: https://img.shields.io/github/license/romnn/npm-package-validator
+        :target: https://github.com/romnn/npm-package-validator
         :alt: License
 
-.. image:: https://codecov.io/gh/romnnn/npm-package-validator/branch/master/graph/badge.svg
-        :target: https://codecov.io/gh/romnnn/npm-package-validator
+.. image:: https://codecov.io/gh/romnn/npm-package-validator/branch/master/graph/badge.svg
+        :target: https://codecov.io/gh/romnn/npm-package-validator
         :alt: Test Coverage
 
 """"""""

@@ -2,7 +2,7 @@
 
 """Top-level package for npm-package-validator."""
 
-__author__ = """romnnn"""
+__author__ = """romnn"""
 __email__ = "contact@romnn.com"
 __version__ = "1.0.1"
 
