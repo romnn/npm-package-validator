@@ -4,7 +4,7 @@
 
 __author__ = """romnn"""
 __email__ = "contact@romnn.com"
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 from npm_package_validator.validate import validate_package
 

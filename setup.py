@@ -10,7 +10,7 @@ current = os.path.dirname(os.path.realpath(__file__))
 
 short_description = "No description has been added so far."
 
-version = "1.0.2"
+version = "1.0.3"
 
 with open(os.path.join(current, "README.rst")) as readme_file:
     long_description = readme_file.read()
