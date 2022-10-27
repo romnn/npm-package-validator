@@ -19,10 +19,8 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      - run: Install dependencies
+      - name: Install dependencies
         run: pipenv install --dev
-
       - name: Test
         run: inv test
-
       - uses: codecov/codecov-action@v3
