@@ -1,19 +1,28 @@
+on: [push, pull_request]
+
 name: test
-
-on: [push]
-
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python: [3.6, 3.7, 3.8]
+        python:
+          - 3.6
+          - 3.7
+          - 3.8
+          - 3.9
+          - 3.10
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
-      - run: pip install tox wheel
+
+      - run: Install dependencies
+        run: pipenv install --dev
+
       - name: Test
-        run: tox
-      - uses: codecov/codecov-action@v1
+        run: inv test
+
+      - uses: codecov/codecov-action@v3

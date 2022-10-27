@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Helpers for `npm_package_validator` package tests."""
-
 import typing
 
 from npm_package_validator import valid_new_package as _valid_new_package
@@ -17,11 +15,11 @@ def _validate_new_old(package_name: str) -> typing.Tuple[bool, bool]:
 
 
 def valid_new_package(package_name: str) -> bool:
-    return _validate_new_old(package_name)[0] == True
+    return _validate_new_old(package_name)[0] is True
 
 
 def valid_old_package(package_name: str) -> bool:
-    return _validate_new_old(package_name)[1] == True
+    return _validate_new_old(package_name)[1] is True
 
 
 def valid_new_and_old_package(package_name: str) -> bool:
@@ -52,7 +50,9 @@ def assert_invalid_package(package_name: str) -> _validate.ResultType:
     return validate_package(package_name)
 
 
-def contains(l: typing.List[str], conds: typing.Union[str, typing.List[str]]) -> bool:
+def contains(
+    _list: typing.List[str], conds: typing.Union[str, typing.List[str]]
+) -> bool:
     _conds: typing.List[str] = []
     if isinstance(conds, str):
         _conds = [conds]
@@ -60,4 +60,4 @@ def contains(l: typing.List[str], conds: typing.Union[str, typing.List[str]]) ->
         _conds = conds
     else:
         raise TypeError("Conditions must be string or list of strings")
-    return all([any([cond in i for i in l]) for cond in _conds])
+    return all([any([cond in i for i in _list]) for cond in _conds])

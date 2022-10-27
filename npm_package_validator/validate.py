@@ -13,16 +13,16 @@ ResultType = typing.Tuple[typing.List[str], typing.List[str]]
 
 def _encode_uri_component_equiv(s: str) -> str:
     """
-        Python equivalent to the javascript encodeURIComponent function
-        see https://stackoverflow.com/a/6618858
+    Python equivalent to the javascript encodeURIComponent function
+    see https://stackoverflow.com/a/6618858
     """
     return quote(s.encode("utf-8"), safe="~()*!.'")
 
 
 def validate_package(package_name: str) -> ResultType:
     """
-        Validates a given package name
-        Based on https://github.com/npm/validate-npm-package-name/blob/master/index.js
+    Validates a given package name
+    Based on https://github.com/npm/validate-npm-package-name/blob/master/index.js
     """
     warnings: typing.List[str] = []
     errors: typing.List[str] = []
@@ -51,8 +51,10 @@ def validate_package(package_name: str) -> ResultType:
         if name == package_name.lower():
             errors.append(f"{name} is a blacklisted name")
 
-    # The following issues are warnings as they have been allowed back in the days
-    # They still hold for validating old, existing packages but are errors when creating new packages
+    # The following issues are warnings,
+    # as they have been allowed back in the days
+    # They hold for validating old, existing packages,
+    # but are treated as errors when creating new packages
 
     for name in builtins:
         if name == package_name.lower():

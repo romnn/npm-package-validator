@@ -6,25 +6,19 @@ name = "pypi"
 [dev-packages]
 # Formatting
 flake8 = "*"
-black = "==19.10b0"
-isort = "*"
+black = "*"
 # Testing
 tox = "*"
 pytest = "*"
 pytest-cov = "*"
 pytest-xdist = "*"
 pytest-sugar = "*"
-pyfakefs = "*"
 mypy = "*"
 # Coverage
 coverage = "*"
 # Tools
 pre-commit = "*"
 invoke = "*"
-"ruamel.yaml" = "*"
 m2r = "*"
 twine = "*"
 bump2version = "*"
-
-[packages]
-npm_package_validator = {path = ".", editable = true}

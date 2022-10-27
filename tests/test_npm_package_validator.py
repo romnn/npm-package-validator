@@ -1,29 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `npm_package_validator` package."""
-
-import typing
-
-import pytest
 from click.testing import CliRunner
 
 from npm_package_validator import cli
 from tests.helpers import (
     assert_invalid_package,
-    assert_valid_new_and_old_package,
-    assert_valid_new_package,
     assert_valid_old_package,
     contains,
     invalid_package,
     valid_new_and_old_package,
-    valid_new_package,
     valid_old_package,
-    validate_package,
 )
 
 
-def test_validate_npm_package_name() -> None:
+def test_validate_npm_package_name():
     """Test valid npm package names."""
     assert valid_new_and_old_package("some-package")
     assert valid_new_and_old_package("example.com")
@@ -40,7 +31,7 @@ def test_validate_npm_package_name() -> None:
     assert contains(warnings, "can no longer contain special characters")
 
 
-def test_validate_bad_char_npm_package_name() -> None:
+def test_validate_bad_char_npm_package_name():
     assert invalid_package(None)
     assert invalid_package(12)
     assert invalid_package("")
@@ -51,7 +42,7 @@ def test_validate_bad_char_npm_package_name() -> None:
     assert invalid_package("my/package")
 
 
-def test_validate_scoped_npm_package_name() -> None:
+def test_validate_scoped_npm_package_name():
     """Test scoped npm package names introduced with npm 2+."""
 
     assert valid_new_and_old_package("@npm/thingy")
@@ -59,7 +50,7 @@ def test_validate_scoped_npm_package_name() -> None:
     assert contains(warnings, "can no longer contain special characters")
 
 
-def test_validate_invalid_npm_package_name() -> None:
+def test_validate_invalid_npm_package_name():
     """Test invalid npm package names."""
 
     errors, warnings = assert_invalid_package("")
@@ -101,20 +92,24 @@ def test_validate_invalid_npm_package_name() -> None:
     errors, warnings = assert_invalid_package("my@package")
     assert contains(errors, "only contain URL-friendly characters")
 
-    errors, warnings = assert_valid_old_package(
-        "ifyouwanttogetthesumoftwonumberswherethosetwonumbersarechosenbyfindingthelargestoftwooutofthreenumbersandsquaringthemwhichismultiplyingthembyitselfthenyoushouldinputthreenumbersintothisfunctionanditwilldothatforyou-"
+    long_name = (
+        "ifyouwanttogetthesumoftwonumberswherethosetwonumbersarechosenby"
+        + "findingthelargestoftwooutofthreenumbersandsquaringthemwhichis"
+        + "multiplyingthembyitselfthenyoushouldinputthreenumbersintothis"
+        + "functionanditwilldothatforyou"
     )
+    assert len(long_name) == 214
+
+    errors, warnings = assert_valid_old_package(long_name + "-")
     assert contains(warnings, "no longer contain more than 214 characters")
 
-    assert valid_new_and_old_package(
-        "ifyouwanttogetthesumoftwonumberswherethosetwonumbersarechosenbyfindingthelargestoftwooutofthreenumbersandsquaringthemwhichismultiplyingthembyitselfthenyoushouldinputthreenumbersintothisfunctionanditwilldothatforyou"
-    )
+    assert valid_new_and_old_package(long_name)
 
     errors, warnings = assert_valid_old_package("CAPITAL-LETTERS")
     assert contains(warnings, "can no longer contain capital letters")
 
 
-def test_validate_blacklisted_npm_package_name() -> None:
+def test_validate_blacklisted_npm_package_name():
     """Test blacklisted npm package names."""
     errors, warnings = assert_invalid_package("node_modules")
     assert contains(errors, "node_modules is a blacklisted name")
@@ -126,7 +121,7 @@ def test_validate_blacklisted_npm_package_name() -> None:
     assert contains(warnings, "http is a core module name")
 
 
-def test_command_line_interface() -> None:
+def test_command_line_interface():
     """Test the CLI."""
     runner = CliRunner()
 

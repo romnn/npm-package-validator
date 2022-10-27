@@ -15,7 +15,7 @@ version = "1.0.3"
 with open(os.path.join(current, "README.rst")) as readme_file:
     long_description = readme_file.read()
 
-requirements = ["Click>=6.0"]
+requirements = ["Click"]
 test_requirements = [
     "tox",
     "pytest",
@@ -23,7 +23,6 @@ test_requirements = [
     "pytest-xdist",
     "pytest-sugar",
     "mypy",
-    "pyfakefs",
 ]
 coverage_requirements = ["coverage", "codecov"]
 docs_requirements = ["sphinx>=2.0", "romnn_sphinx_press_theme", "sphinxemoji"]
@@ -32,9 +31,7 @@ tool_requirements = [
     "m2r",
     "twine",
     "invoke",
-    "ruamel.yaml",
     "pre-commit",
-    "cookiecutter",
     "bump2version",
 ]
 dev_requirements = (
@@ -63,9 +60,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     entry_points={
-        "console_scripts": [
-            "npm_package_validator=npm_package_validator.cli:main"
-        ]
+        "console_scripts": ["npm_package_validator=npm_package_validator.cli:main"]
     },
     python_requires=">=3.6",
     install_requires=requirements,
